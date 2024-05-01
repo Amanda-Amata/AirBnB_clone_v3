@@ -7,7 +7,7 @@ from models import storage
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
 def status():
-    ''' routes to status page '''
+    """ routes to status page """
     data = {
         "status": "OK"
     }
@@ -20,7 +20,7 @@ def status():
 
 @app_views.route('/stats', methods=['GET'], strict_slashes=False)
 def count():
-    '''retrieves the number of each objects by type'''
+    """retrieves the number of each objects by type"""
     data = {
         "amenities": storage.count("Amenity"),
         "cities": storage.count("City"),
