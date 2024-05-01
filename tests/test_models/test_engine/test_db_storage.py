@@ -83,7 +83,7 @@ class TestDBStorage(unittest.TestCase):
         models.storage.new(new_state)
         models.storage.save()
 
-        session = models.storage._DBStorage_session
+        session = models.storage._DBStorage__session
 
         all_objects = seesion.query(State).all()
 
@@ -97,7 +97,7 @@ class TestDBStorage(unittest.TestCase):
 
         models.storage.new(new_state)
 
-        session = models.storage._DBStorage_session
+        session = models.storage._DBStorage__session
 
         retrieved_state = session.query(State).filter_by(id=new_state.id).first()  # noqa
 
@@ -133,7 +133,7 @@ class TestDBStorage(unittest.TestCase):
         state_data = {"name": "Virginia"}
 
         state_instance = State(**state_data)
-        storage.new(state_innstance)
+        storage.new(state_instance)
         storage.save()
 
         retrieved_state = storage.get(State, state_instance.id)
@@ -164,5 +164,5 @@ class TestDBStorage(unittest.TestCase):
         state_occurrence = storage.count(State)
         self.assertEqual(state_occurrence, len(storage.all(State)))
 
-        all_occurrence = storage.count(State)
+        all_occurrence = storage.count()
         self.assertEqual(all_occurrence, len(storage.all()))
