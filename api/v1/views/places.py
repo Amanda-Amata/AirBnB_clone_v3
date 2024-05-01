@@ -12,7 +12,7 @@ import uuid
 @app_views.route('/cities/<city_id>/places', methods=['GET'])
 @app_views.route('/cities/<city_id>/places/', methods=['GET'])
 def list_places_of_city(city_id):
-    '''Retrieves a list of all Place objects in city'''
+    """Retrieves a list of all Place objects in city"""
     all_cities = storage.all("City").values()
     city_obj = [obj.to_dict() for obj in all_cities if obj.id == city_id]
     if city_obj == []:
@@ -24,7 +24,7 @@ def list_places_of_city(city_id):
 
 @app_views.route('/places/<place_id>', methods=['GET'])
 def get_place(place_id):
-    '''Retrieves a Place object'''
+    """"Retrieves a Place object"""
     all_places = storage.all("Place").values()
     place_obj = [obj.to_dict() for obj in all_places if obj.id == place_id]
     if place_obj == []:
@@ -34,7 +34,7 @@ def get_place(place_id):
 
 @app_views.route('/places/<place_id>', methods=['DELETE'])
 def delete_place(place_id):
-    '''Deletes a Place object'''
+    """Deletes a Place object"""
     all_places = storage.all("Place").values()
     place_obj = [obj.to_dict() for obj in all_places
                  if obj.id == place_id]
@@ -50,7 +50,7 @@ def delete_place(place_id):
 
 @app_views.route('/cities/<city_id>/places', methods=['POST'])
 def create_place(city_id):
-    '''Creates a Place'''
+    """Creates a Place"""
     if not request.get_json():
         abort(400, 'Not a JSON')
     if 'user_id' not in request.get_json():
