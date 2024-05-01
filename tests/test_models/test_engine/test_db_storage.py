@@ -85,7 +85,7 @@ class TestDBStorage(unittest.TestCase):
 
         session = models.storage._DBStorage__session
 
-        all_objects = seesion.query(State).all()
+        all_objects = session.query(State).all()
 
         self.assertTrue(len(all_objects) > 0)
 
