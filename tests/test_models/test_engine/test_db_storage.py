@@ -115,7 +115,7 @@ class TestDBStorage(unittest.TestCase):
 
         models.storage.save()
 
-        session = models.storage._DBStorage_session
+        session = models.storage._DBStorage__session
 
         retrieved_state = session.query(State).filter_by(id=new_state.id).first()  # noqa
 
@@ -152,6 +152,8 @@ class TestDBStorage(unittest.TestCase):
         state_data = {"name": "Taxes"}
         state_instance = State(**state_data)
         storage.new(state_instance)
+
+        city_data = {"name": "Miami", "state_id": state_instance.id}
 
         city_instance = City(**city_data)
 
